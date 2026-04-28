@@ -1,0 +1,23 @@
+name: VarPheno
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+
+dependencies:
+  - python=3.10
+  - pytorch=2.1
+  - pytorch-cuda=11.8
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - pip
+
+  - pip:
+      - torch-geometric
+      - scanpy
+      - anndata
+      - tqdm

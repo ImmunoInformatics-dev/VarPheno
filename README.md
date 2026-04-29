@@ -33,8 +33,23 @@ X_{\mathrm{SNP-Cell}}=\left(M^{\left(1\right)}M^{\left(2\right)}\right)\odot M^{
 where $M^{(1)}\in\mathbb{R}^{S\times K}$ denote an SNP-sample binary matrix indicating whether each SNP was detected in samples, $M^{(2)}\in\mathbb{R}^{K\times N}$ is a sample-cell matrix used to record the sample source of each cell, $M^{(3)}\in\mathbb{R}^{S\times N}$ denote the peak-cell normalized matrix obtained from Signac pipeline, only peaks that exited SNPs would be retained. $K$ is the number of samples.
 
 (2) Edge Matrix
+
+The edge matrix is obtained by calculating the cosine similarity of the Feature matrix, and impose restrictions based on the SNN structure. Formally, the adjacency matrix $A\in\mathbb{R}^{N\times N}$ was defined as:
+```math
+A_{ij} =
+\begin{cases}
+\mathrm{sim}(x_i, x_j), & S_{ij} > 0 \\
+0, & S_{ij} = 0
+\end{cases}
+```
+where $S_{ij}$ denotes the SNN connectivity between cells $i$ and $j$.
+
 (3) Cell label
+
+Cell type labels of cells.
+
 (4) SNP list
+
 
 ## Run 
 

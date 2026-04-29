@@ -24,15 +24,21 @@ pip install numpy pandas scipy scikit-learn matplotlib seaborn tqdm scanpy annda
 
 ## Data Preparation
 
-## Run
+You need to prepare four input files.
+(1) Feature Matrix
+(2) Edge Matrix
+(3) Cell label
+(4) SNP list
+
+## Run 
 
 ```bash
 from Varpheno import run_snp_celltype_score
 
 res = run_snp_celltype_score(
     matrix_npz = "ExampleData/Feature.npz",
+    Edge_npy = "ExampleData/Edge.npy",
     label_csv = "ExampleData/Cell_label.csv",
-    similarity_npy = "ExampleData/Similarity_Snn.npy",
     snp_name_file = "ExampleData/SNP.txt",
     outdir="OutPut"
 )

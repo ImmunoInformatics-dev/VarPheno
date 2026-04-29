@@ -16,7 +16,7 @@ from sklearn.metrics import (
 )
 
 from torch_geometric.nn import GCNConv
-from torch_geometric.explain import Explainer
+from torch_geometric.explain import Explainer, unfaithfulness
 from torch_geometric.explain.algorithm import GNNExplainer
 
 class GCN(torch.nn.Module):
@@ -114,8 +114,8 @@ def aggregate_snp_by_celltype(node_mask, labels, label_names, snp_names=None):
 def run_snp_celltype_score(
     matrix_npz,
     label_csv,
-    similarity_npy,
-    outdir="./SNP_GCN_result",
+    Edge_npy,
+    outdir="./OutPut",
     snp_name_file=None,
     hidden_dim1=256,
     hidden_dim2=125,
@@ -135,7 +135,7 @@ def run_snp_celltype_score(
 
     data = sp.load_npz(matrix_npz)
     labels_raw = pd.read_csv(label_csv, header=None)[0].astype(str)
-    similarity = np.load(similarity_npy)
+    similarity = np.load(Edge_npy)
 
     le = LabelEncoder()
     labels_np = le.fit_transform(labels_raw)

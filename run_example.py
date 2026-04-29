@@ -1,4 +1,4 @@
-from varpheno import run_snp_celltype_score
+from Varpheno import run_snp_celltype_score
 
 res = run_snp_celltype_score(
     matrix_npz = "ExampleData/Feature.npz",

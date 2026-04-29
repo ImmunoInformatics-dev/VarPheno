@@ -1,7 +1,9 @@
 # VarPheno
 
 VarPheno integrates graph convolutional network and GNNExplainer model interpreter to embed somatic mutations into single cell regulatory landscapes and reveals their roles in shaping cell states and lineage dynamics.
-https://github.com/ImmunoInformatics-dev/VarPheno/blob/main/framework/VarPheno.png
+
+![](https://github.com/ImmunoInformatics-dev/VarPheno/blob/main/framework/VarPheno.png)
+
 ## Install
 
 conda env create -f environment.yml

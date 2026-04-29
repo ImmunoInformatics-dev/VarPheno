@@ -1,7 +1,7 @@
 # VarPheno
 
-GCN-based cell type classification and SNP importance scoring using GNNExplainer.
-
+VarPheno integrates graph convolutional network and GNNExplainer model interpreter to embed somatic mutations into single cell regulatory landscapes and reveals their roles in shaping cell states and lineage dynamics.
+https://github.com/ImmunoInformatics-dev/VarPheno/blob/main/framework/VarPheno.png
 ## Install
 
 conda env create -f environment.yml

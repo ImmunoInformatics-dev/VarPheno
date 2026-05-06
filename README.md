@@ -55,6 +55,7 @@ $M^{(3)}$: 3-Peaks_Cell.pkl
 | chr1-991000-991499 | 0.43 | 0.00 | 0.18 | 0.00 | ... | 0.00 | 0.00 | 0.00 |
 
 
+
 ```math
 X_{\mathrm{SNP-Cell}}=\left(M^{\left(1\right)}M^{\left(2\right)}\right)\odot M^{\left(3\right)}
 ```
@@ -127,7 +128,7 @@ run_snp_celltype_score(
     Edge_npy = "ExampleData/Edge.npy",
     label_csv = "ExampleData/Cell_label.csv",
     snp_name_file = "ExampleData/SNP.txt",
-    outdir="OutPut"
+    outdir="Output"
 )
 ```
 
@@ -139,3 +140,5 @@ run_snp_celltype_score(
 - SNP_in_Celltype_score.csv
 - GNNExplainer_evaluation.csv
 
+## Cite
+If you have used VarPheno, please refer to the following article: 

@@ -25,17 +25,28 @@ pip install numpy pandas scipy scikit-learn matplotlib seaborn tqdm scanpy annda
 ## Data Preparation
 
 (1) Feature Matrix
-You need to prepare three input files: $M^{(1)}$ 1-SNP_SampleCellType_Matrix.txt; $M^{(2)}$ 2-SampleCelltype_Cell.txt; $M^{(3)}$ 3-Peaks_Cell.pkl.
+You need to prepare three input files: 
+
+$M^{(1)}$ 1-SNP_SampleCellType_Matrix.txt
+
+|  | Sample1_Celltype1 | Sample1_Celltype2 |   ...   | Sample9_Celltype9 | Sample9_Celltype10 |
+|---|---|---|---|---|---|
+| chr1-838667-G-A | 1 | 0 | ... | 0 | 0 |
+| chr1-890636-T-C | 0 | 0 | ... | 0 | 1 |
+| chr1-991241-A-C | 0 | 1 | ... | 0 | 0 |
+
+$M^{(2)}$ 2-SampleCelltype_Cell.txt 
+
+
+$M^{(3)}$ 3-Peaks_Cell.pkl
+
+
 ```math
 X_{\mathrm{SNP-Cell}}=\left(M^{\left(1\right)}M^{\left(2\right)}\right)\odot M^{\left(3\right)}
 ```
 where $M^{(1)}$ denote an SNP-sample binary matrix indicating whether each SNP was detected in samples, $M^{(2)}$ is a sample-cell matrix used to record the sample source of each cell, $M^{(3)}$ denote the peak-cell normalized matrix obtained from Signac pipeline. Only peaks that exited SNPs would be retained.
 
-|  | Sample1_Celltype1 | Sample1_Celltype2 |  ...  | Sample9_Celltype9 | Sample9_Celltype10 |
-|---|---|---|---|---|---|
-| chr1-838667-G-A | 1 | 0 | ... | 0 | 0 |
-| chr1-890636-T-C | 0 | 0 | ... | 0 | 1 |
-| chr1-991241-A-C | 0 | 1 | ... | 0 | 0 |
+
 
 ```bash
 from Varpheno import prepare_feature_matrix

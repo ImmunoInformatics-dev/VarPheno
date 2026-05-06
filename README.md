@@ -32,6 +32,17 @@ X_{\mathrm{SNP-Cell}}=\left(M^{\left(1\right)}M^{\left(2\right)}\right)\odot M^{
 ```
 where $M^{(1)}\in\mathbb{R}^{S\times K}$ denote an SNP-sample binary matrix indicating whether each SNP was detected in samples, $M^{(2)}\in\mathbb{R}^{K\times N}$ is a sample-cell matrix used to record the sample source of each cell, $M^{(3)}\in\mathbb{R}^{S\times N}$ denote the peak-cell normalized matrix obtained from Signac pipeline, only peaks that exited SNPs would be retained. $K$ is the number of samples.
 
+```bash
+from Varpheno import prepare_snp_cell_matrix
+
+C = prepare_snp_cell_matrix(
+    snp_sample_file="ExampleData/1-SNP_SampleCellType_Matrix.txt",
+    sample_cell_file="ExampleData/2-SampleCelltype_Cell.txt",
+    peaks_cell_file="ExampleData/3-Peaks_Cell.pkl",
+    out_npz="ExampleData/Feature.npz"
+)
+```
+
 (2) Edge Matrix
 
 The edge matrix is obtained by calculating the cosine similarity of the Feature matrix, and impose restrictions based on the SNN structure. Formally, the adjacency matrix $A\in\mathbb{R}^{N\times N}$ was defined as:

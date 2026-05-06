@@ -27,18 +27,25 @@ pip install numpy pandas scipy scikit-learn matplotlib seaborn tqdm scanpy annda
 (1) Feature Matrix
 You need to prepare three input files: 
 
-$M^{(1)}$ 1-SNP_SampleCellType_Matrix.txt
+$M^{(1)}$: 1-SNP_SampleCellType_Matrix.txt
 
-|  | Sample1_Celltype1 | Sample1_Celltype2 |   ...   | Sample9_Celltype9 | Sample9_Celltype10 |
+|  | Sample1_Celltype1 | Sample1_Celltype2 |   ...   | Sample10_Celltype9 | Sample10_Celltype10 |
 |---|---|---|---|---|---|
 | chr1-838667-G-A | 1 | 0 | ... | 0 | 0 |
 | chr1-890636-T-C | 0 | 0 | ... | 0 | 1 |
 | chr1-991241-A-C | 0 | 1 | ... | 0 | 0 |
 
-$M^{(2)}$ 2-SampleCelltype_Cell.txt 
+$M^{(2)}$: 2-SampleCelltype_Cell.txt 
 
+|  | Cell1 | Cell2 | Cell3 | ... | Cell99 | Cell100 |
+|---|---|---|---|---|---|---|
+| Sample1_Celltype1 | 0 | 0 | 0 | ... | 0 | 0 |
+| Sample1_Celltype2 | 1 | 0 | 0 | ... | 0 | 0 |
+| ... | ... | ... | ... | ... | ... | ... |
+| Sample10_Celltype9 | 0 | 0 | 0 | ... | 0 | 0 |
+| Sample10_Celltype10 | 0 | 0 | 0 | ... | 0 | 0 |
 
-$M^{(3)}$ 3-Peaks_Cell.pkl
+$M^{(3)}$: 3-Peaks_Cell.pkl
 
 
 ```math

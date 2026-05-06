@@ -24,7 +24,7 @@ pip install numpy pandas scipy scikit-learn matplotlib seaborn tqdm scanpy annda
 
 ## Data Preparation
 
-(1) Feature Matrix
+### (1) Feature Matrix
 
 Three input files should be prepared: 
 
@@ -74,7 +74,7 @@ prepare_feature_matrix(
 )
 ```
 
-(2) Edge Matrix
+### (2) Edge Matrix
 
 Snn_connectivities.pkl should be prepared:
 
@@ -110,11 +110,11 @@ prepare_edge_matrix(
 )
 ```
 
-(3) Cell label
+### (3) Cell label
 
 The cell type to which the cells belong in the 2-SampleCelltype_Cell.txt file.
 
-(4) SNP list
+### (4) SNP list
 
 SNP list should be prepared, and the order of the SNP list is consistent with the column names in 1-SNP_SampleCellType_Matrix.txt.
 

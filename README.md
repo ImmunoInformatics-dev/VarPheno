@@ -42,7 +42,7 @@ $M^{(2)}$: 2-SampleCelltype_Cell.txt
 |---|---|---|---|---|---|---|---|---|
 | Sample1_Celltype1 | 1 | 1 | 0 | 1 | ... | 0 | 1 | 0 |
 | Sample1_Celltype2 | 0 | 0 | 1 | 1 | ... | 0 | 0 | 1 |
-| ... | ... | ... | ... | ... | ... | ... | ... |... |
+| ... | ... | ... | ... | ... | ... | ... | ... | ... |
 | Sample10_Celltype9 | 0 | 0 | 0 | 0 | ... | 1 | 1 | 1 |
 | Sample10_Celltype10 | 0 | 0 | 0 | 0 | ... | 0 | 0 | 0 |
 
@@ -50,9 +50,9 @@ $M^{(3)}$: 3-Peaks_Cell.pkl
 
 |   | Cell1 | Cell2 | Cell3 | Cell4 |... | Cell98 | Cell99 | Cell100 |
 |---|---|---|---|---|---|---|---|---|
-| chr1-838400-838899 | 0.12 | 0.00 | 0.35 |0.00 | ... | 0.08 | 0.00 |0.00 |
-| chr1-890400-890899 | 0.00 | 0.21 | 0.00 |0.00 | ... | 0.00 | 0.14 |0.00 |
-| chr1-991000-991499 | 0.43 | 0.00 | 0.18 |0.00 | ... | 0.00 | 0.00 |0.00 |
+| chr1-838400-838899 | 0.12 | 0.00 | 0.35 | 0.00 | ... | 0.08 | 0.00 | 0.00 |
+| chr1-890400-890899 | 0.00 | 0.21 | 0.00 | 0.00 | ... | 0.00 | 0.14 | 0.00 |
+| chr1-991000-991499 | 0.43 | 0.00 | 0.18 | 0.00 | ... | 0.00 | 0.00 | 0.00 |
 
 
 ```math
@@ -74,6 +74,20 @@ prepare_feature_matrix(
 ```
 
 (2) Edge Matrix
+
+Snn_connectivities.pkl should be prepared:
+
+|   | Cell1 | Cell2 | Cell3 | Cell4 |... | Cell98 | Cell99 | Cell100 |
+|---|---|---|---|---|---|---|---|---|
+| Cell1 | 1 | 0 | 0 | 0 | ... | 0 | 1 | 0 |
+| Cell2 | 0 | 1 | 0 | 1 | ... | 0 | 0 | 0 |
+| Cell3 | 0 | 0 | 1 | 0 | ... | 0 | 0 | 0 |
+| Cell4 | 0 | 0 | 0 | 1 | ... | 0 | 0 | 0 |
+| ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| Cell98 | 0 | 0 | 0 | 0 | ... | 1 | 0 | 0 |
+| Cell99 | 0 | 1 | 0 | 0 | ... | 0 | 1 | 0 |
+| Cell100 | 0 | 0 | 0 | 0 | ... | 0 | 0 | 1 |
+
 
 The edge matrix is obtained by calculating the cosine similarity of the Feature matrix, and impose restrictions based on the SNN structure. Formally, the adjacency matrix $A\in\mathbb{R}^{N\times N}$ was defined as:
 ```math

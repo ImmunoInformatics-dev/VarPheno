@@ -37,13 +37,13 @@ $M^{(1)}$: 1-SNP_SampleCellType_Matrix.txt
 
 $M^{(2)}$: 2-SampleCelltype_Cell.txt 
 
-|  | Cell1 | Cell2 | Cell3 | ... | Cell99 | Cell100 |
-|---|---|---|---|---|---|---|
-| Sample1_Celltype1 | 0 | 0 | 0 | ... | 0 | 0 |
-| Sample1_Celltype2 | 1 | 0 | 0 | ... | 0 | 0 |
-| ... | ... | ... | ... | ... | ... | ... |
-| Sample10_Celltype9 | 0 | 0 | 0 | ... | 0 | 0 |
-| Sample10_Celltype10 | 0 | 0 | 0 | ... | 0 | 0 |
+|  | Cell1 | Cell2 | Cell3 | Cell4 |... | Cell98 | Cell99 | Cell100 |
+|---|---|---|---|---|---|---|---|---|
+| Sample1_Celltype1 | 1 | 1 | 0 | 1 | ... | 0 | 1 | 0 |
+| Sample1_Celltype2 | 0 | 0 | 1 | 1 | ... | 0 | 0 | 1 |
+| ... | ... | ... | ... | ... | ... | ... | ... |... |
+| Sample10_Celltype9 | 0 | 0 | 0 | 0 | ... | 1 | 1 | 1 |
+| Sample10_Celltype10 | 0 | 0 | 0 | 0 | ... | 0 | 0 | 0 |
 
 $M^{(3)}$: 3-Peaks_Cell.pkl
 

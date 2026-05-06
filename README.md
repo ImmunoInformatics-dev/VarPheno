@@ -53,10 +53,11 @@ $M^{(3)}$: 3-Peaks_Cell.pkl
 | chr1-890400-890899 | 0.00 | 0.21 | 0.00 |0.00 | ... | 0.00 | 0.14 |0.00 |
 | chr1-991000-991499 | 0.43 | 0.00 | 0.18 |0.00 | ... | 0.00 | 0.00 |0.00 |
 
+
 ```math
 X_{\mathrm{SNP-Cell}}=\left(M^{\left(1\right)}M^{\left(2\right)}\right)\odot M^{\left(3\right)}
 ```
-where $M^{(1)}$ denote an SNP-sample binary matrix indicating whether each SNP was detected in samples, $M^{(2)}$ is a sample-cell matrix used to record the sample source of each cell, $M^{(3)}$ denote the peak-cell normalized matrix obtained from Signac pipeline. Only peaks that exited SNPs would be retained.
+where $M^{(1)}$ denote an SNP-sample binary matrix indicating whether each SNP was detected in samples, $M^{(2)}$ is a sample-cell matrix used to record the sample source of each cell, $M^{(3)}$ denote the peak-cell normalized matrix obtained from scATAC-seq data. Only peaks that exited SNPs would be retained.
 
 
 

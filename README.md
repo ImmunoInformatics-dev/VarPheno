@@ -25,7 +25,8 @@ pip install numpy pandas scipy scikit-learn matplotlib seaborn tqdm scanpy annda
 ## Data Preparation
 
 (1) Feature Matrix
-You need to prepare three input files: 
+
+Three input files should be prepared: 
 
 $M^{(1)}$: 1-SNP_SampleCellType_Matrix.txt
 
@@ -96,10 +97,11 @@ prepare_edge_matrix(
 
 (3) Cell label
 
-Cell type labels of cells.
+The cell type to which the cells belong in the 2-SampleCelltype_Cell.txt file.
 
 (4) SNP list
 
+SNP list should be prepared, and the order of the SNP list is consistent with the column names in 1-SNP_SampleCellType_Matrix.txt.
 
 ## Run 
 

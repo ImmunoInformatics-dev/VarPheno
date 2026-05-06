@@ -33,9 +33,9 @@ X_{\mathrm{SNP-Cell}}=\left(M^{\left(1\right)}M^{\left(2\right)}\right)\odot M^{
 where $M^{(1)}\in\mathbb{R}^{S\times K}$ denote an SNP-sample binary matrix indicating whether each SNP was detected in samples, $M^{(2)}\in\mathbb{R}^{K\times N}$ is a sample-cell matrix used to record the sample source of each cell, $M^{(3)}\in\mathbb{R}^{S\times N}$ denote the peak-cell normalized matrix obtained from Signac pipeline, only peaks that exited SNPs would be retained. $K$ is the number of samples.
 
 ```bash
-from Varpheno import prepare_snp_cell_matrix
+from Varpheno import prepare_feature_matrix
 
-C = prepare_snp_cell_matrix(
+prepare_feature_matrix(
     snp_sample_file="ExampleData/1-SNP_SampleCellType_Matrix.txt",
     sample_cell_file="ExampleData/2-SampleCelltype_Cell.txt",
     peaks_cell_file="ExampleData/3-Peaks_Cell.pkl",
@@ -55,6 +55,16 @@ A_{ij} =
 ```
 where $S_{ij}$ denotes the SNN connectivity between cells $i$ and $j$.
 
+```bash
+from Varpheno import prepare_edge_matrix
+
+prepare_edge_matrix(
+    snp_cell_npz="ExampleData/Feature.npz",
+    snn_file="ExampleData/Snn_connectivities.pkl",
+    out_npy="ExampleData/Edge.npy"
+)
+```
+
 (3) Cell label
 
 Cell type labels of cells.
@@ -67,7 +77,7 @@ Cell type labels of cells.
 ```bash
 from Varpheno import run_snp_celltype_score
 
-res = run_snp_celltype_score(
+run_snp_celltype_score(
     matrix_npz = "ExampleData/Feature.npz",
     Edge_npy = "ExampleData/Edge.npy",
     label_csv = "ExampleData/Cell_label.csv",

@@ -47,6 +47,11 @@ $M^{(2)}$: 2-SampleCelltype_Cell.txt
 
 $M^{(3)}$: 3-Peaks_Cell.pkl
 
+|   | Cell1 | Cell2 | Cell3 | Cell4 |... | Cell98 | Cell99 | Cell100 |
+|---|---|---|---|---|---|---|---|---|
+| chr1-838667-G-A | 0.12 | 0.00 | 0.35 | ... | 0.08 | 0.00 |
+| chr1-890636-T-C | 0.00 | 0.21 | 0.00 | ... | 0.00 | 0.14 |
+| chr1-991241-A-C | 0.43 | 0.00 | 0.18 | ... | 0.00 | 0.00 |
 
 ```math
 X_{\mathrm{SNP-Cell}}=\left(M^{\left(1\right)}M^{\left(2\right)}\right)\odot M^{\left(3\right)}

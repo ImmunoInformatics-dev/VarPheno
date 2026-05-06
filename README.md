@@ -24,13 +24,12 @@ pip install numpy pandas scipy scikit-learn matplotlib seaborn tqdm scanpy annda
 
 ## Data Preparation
 
-You need to prepare four input files.
-
 (1) Feature Matrix
+You need to prepare three input files: $M^{(1)}$ 1-SNP_SampleCellType_Matrix.txt; $M^{(2)}$ 2-SampleCelltype_Cell.txt; $M^{(3)}$ 3-Peaks_Cell.pkl.
 ```math
 X_{\mathrm{SNP-Cell}}=\left(M^{\left(1\right)}M^{\left(2\right)}\right)\odot M^{\left(3\right)}
 ```
-where $M^{(1)}\in\mathbb{R}^{S\times K}$ denote an SNP-sample binary matrix indicating whether each SNP was detected in samples, $M^{(2)}\in\mathbb{R}^{K\times N}$ is a sample-cell matrix used to record the sample source of each cell, $M^{(3)}\in\mathbb{R}^{S\times N}$ denote the peak-cell normalized matrix obtained from Signac pipeline, only peaks that exited SNPs would be retained. $K$ is the number of samples.
+where $M^{(1)}$ denote an SNP-sample binary matrix indicating whether each SNP was detected in samples, $M^{(2)}$ is a sample-cell matrix used to record the sample source of each cell, $M^{(3)}$ denote the peak-cell normalized matrix obtained from Signac pipeline. Only peaks that exited SNPs would be retained.
 
 ```bash
 from Varpheno import prepare_feature_matrix
@@ -53,7 +52,7 @@ A_{ij} =
 0, & S_{ij} = 0
 \end{cases}
 ```
-where $S_{ij}$ denotes the SNN connectivity between cells $i$ and $j$.
+where $S_{ij}$ denotes the SNN connectivity between cells $i$ and $j$. $N$ denotes the number of cells.
 
 ```bash
 from Varpheno import prepare_edge_matrix

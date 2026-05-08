@@ -64,7 +64,7 @@ where $M^{(1)}$ denote an SNP-sample binary matrix indicating whether each SNP w
 
 
 ```bash
-from Varpheno import prepare_feature_matrix
+from VarPheno import prepare_feature_matrix
 
 prepare_feature_matrix(
     snp_sample_file="ExampleData/1-SNP_SampleCellType_Matrix.txt",
@@ -101,7 +101,7 @@ A_{ij} =
 where $S_{ij}$ denotes the SNN connectivity between cells $i$ and $j$. $N$ denotes the number of cells.
 
 ```bash
-from Varpheno import prepare_edge_matrix
+from VarPheno import prepare_edge_matrix
 
 prepare_edge_matrix(
     snp_cell_npz="ExampleData/Feature.npz",
@@ -121,7 +121,7 @@ SNP list should be prepared, and the order of the SNP list is consistent with th
 ## Run 
 
 ```bash
-from Varpheno import run_snp_celltype_score
+from VarPheno import run_snp_celltype_score
 
 run_snp_celltype_score(
     matrix_npz = "ExampleData/Feature.npz",

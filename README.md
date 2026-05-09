@@ -28,7 +28,7 @@ pip install numpy pandas scipy scikit-learn matplotlib seaborn tqdm scanpy annda
 
 Three input files should be prepared: 
 
-$M^{(1)}$: 1-SNP_SampleCellType_Matrix.txt
+$M^{(1)}$: 1-SNV_SampleCellType_Matrix.txt
 
 |  | Sample1_Celltype1 | Sample1_Celltype2 |   ...   | Sample10_Celltype9 | Sample10_Celltype10 |
 |---|:---:|:---:|:---:|:---:|:---:|
@@ -57,9 +57,9 @@ $M^{(3)}$: 3-Peaks_Cell.pkl
 
 
 ```math
-X_{\mathrm{SNP-Cell}}=\left(M^{\left(1\right)}M^{\left(2\right)}\right)\odot M^{\left(3\right)}
+X_{\mathrm{SNV-Cell}}=\left(M^{\left(1\right)}M^{\left(2\right)}\right)\odot M^{\left(3\right)}
 ```
-where $M^{(1)}$ denote an SNP-sample binary matrix indicating whether each SNP was detected in samples, $M^{(2)}$ is a sample-cell matrix used to record the sample source of each cell, $M^{(3)}$ denote the peak-cell normalized matrix obtained from scATAC-seq data. Only peaks that exited SNPs would be retained.
+where $M^{(1)}$ denote an SNV-sample binary matrix indicating whether each SNV was detected in samples, $M^{(2)}$ is a sample-cell matrix used to record the sample source of each cell, $M^{(3)}$ denote the peak-cell normalized matrix obtained from scATAC-seq data. Only peaks that exited SNVs would be retained.
 
 
 
@@ -67,7 +67,7 @@ where $M^{(1)}$ denote an SNP-sample binary matrix indicating whether each SNP w
 from VarPheno import prepare_feature_matrix
 
 prepare_feature_matrix(
-    snp_sample_file="ExampleData/1-SNP_SampleCellType_Matrix.txt",
+    SNV_sample_file="ExampleData/1-SNV_SampleCellType_Matrix.txt",
     sample_cell_file="ExampleData/2-SampleCelltype_Cell.txt",
     peaks_cell_file="ExampleData/3-Peaks_Cell.pkl",
     out_npz="ExampleData/Feature.npz"
@@ -104,7 +104,7 @@ where $S_{ij}$ denotes the SNN connectivity between cells $i$ and $j$. $N$ denot
 from VarPheno import prepare_edge_matrix
 
 prepare_edge_matrix(
-    snp_cell_npz="ExampleData/Feature.npz",
+    SNV_cell_npz="ExampleData/Feature.npz",
     snn_file="ExampleData/Snn_connectivities.pkl",
     out_npy="ExampleData/Edge.npy"
 )
@@ -114,20 +114,20 @@ prepare_edge_matrix(
 
 The cell type to which the cells belong in the 2-SampleCelltype_Cell.txt file.
 
-### (4) SNP list
+### (4) SNV list
 
-SNP list should be prepared, and the order of the SNP list is consistent with the column names in 1-SNP_SampleCellType_Matrix.txt.
+SNV list should be prepared, and the order of the SNV list is consistent with the column names in 1-SNV_SampleCellType_Matrix.txt.
 
 ## Run 
 
 ```bash
-from VarPheno import run_snp_celltype_score
+from VarPheno import run_SNV_celltype_score
 
-run_snp_celltype_score(
+run_SNV_celltype_score(
     matrix_npz = "ExampleData/Feature.npz",
     Edge_npy = "ExampleData/Edge.npy",
     label_csv = "ExampleData/Cell_label.csv",
-    snp_name_file = "ExampleData/SNP.txt",
+    SNV_name_file = "ExampleData/SNV.txt",
     outdir="Output"
 )
 ```
@@ -137,7 +137,7 @@ run_snp_celltype_score(
 - Cell_Celltype_probability.csv
 - GCN_evaluation.csv
 - GCN_per_celltype_PRAUC.csv
-- SNP_in_Celltype_score.csv
+- SNV_in_Celltype_score.csv
 - GNNExplainer_evaluation.csv
 
 ## Cite

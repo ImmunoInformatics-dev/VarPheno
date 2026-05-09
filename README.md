@@ -5,12 +5,7 @@ VarPheno integrates graph convolutional network and GNNExplainer model interpret
 
 ## Install
 
-You can choose to install the CPU or GPU version.
-```bash
-conda env create -f environment.gpu.yml #conda env create -f environment.cpu.yml
-conda activate VarPheno
-```
-You can also install VarPheno following the steps:
+You can install VarPheno following the steps:
 
 ```bash
 conda create -n VarPheno python=3.10 -y

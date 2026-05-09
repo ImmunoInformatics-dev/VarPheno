@@ -1,7 +1,7 @@
 # VarPheno
 
 VarPheno integrates graph convolutional network and GNNExplainer model interpreter to embed somatic mutations into single cell regulatory landscapes and reveals their roles in shaping cell states and lineage dynamics.
-![](https://github.com/ImmunoInformatics-dev/VarPheno/blob/main/framework/VarPheno.png)
+![](https://github.com/ImmunoInformatics-dev/VarPheno/blob/main/Abstract/VarPheno.png)
 
 ## Install
 
@@ -41,7 +41,7 @@ $M^{(2)}$: 2-SampleCelltype_Cell.txt
 | Sample10_Celltype9 | 0 | 0 | 0 | 0 | ... | 1 | 1 | 1 |
 | Sample10_Celltype10 | 0 | 0 | 0 | 0 | ... | 0 | 0 | 0 |
 
-$M^{(3)}$: 3-Peaks_Cell.pkl
+$M^{(3)}$: 3-Peaks_Cell.npz
 
 |   | Cell1 | Cell2 | Cell3 | Cell4 |... | Cell98 | Cell99 | Cell100 |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -64,7 +64,7 @@ from VarPheno import prepare_feature_matrix
 prepare_feature_matrix(
     snv_sample_file="ExampleData/1-SNV_SampleCellType_Matrix.txt",
     sample_cell_file="ExampleData/2-SampleCelltype_Cell.txt",
-    peaks_cell_file="ExampleData/3-Peaks_Cell.pkl",
+    peaks_cell_file="ExampleData/3-Peaks_Cell.npz",
     out_npz="ExampleData/Feature.npz"
 )
 ```

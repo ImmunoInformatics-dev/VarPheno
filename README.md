@@ -21,7 +21,7 @@ pip install numpy pandas scipy scikit-learn matplotlib seaborn tqdm scanpy annda
 
 ### (1) Feature Matrix
 
-Three input files should be prepared: 
+Three input files according to the example should be prepared:
 
 $M^{(1)}$: 1-SNV_SampleCellType_Matrix.txt
 

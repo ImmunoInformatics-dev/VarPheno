@@ -76,7 +76,7 @@ prepare_feature_matrix(
 
 ### (2) Edge Matrix
 
-Snn_connectivities.pkl should be prepared:
+Snn_connectivities.npz should be prepared:
 
 |   | Cell1 | Cell2 | Cell3 | Cell4 |... | Cell98 | Cell99 | Cell100 |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -105,7 +105,7 @@ from VarPheno import prepare_edge_matrix
 
 prepare_edge_matrix(
     snv_cell_npz="ExampleData/Feature.npz",
-    snn_file="ExampleData/Snn_connectivities.pkl",
+    snn_file="ExampleData/Snn_connectivities.npz",
     out_npy="ExampleData/Edge.npy"
 )
 ```

@@ -67,7 +67,7 @@ where $M^{(1)}$ denote an SNV-sample binary matrix indicating whether each SNV w
 from VarPheno import prepare_feature_matrix
 
 prepare_feature_matrix(
-    SNV_sample_file="ExampleData/1-SNV_SampleCellType_Matrix.txt",
+    snv_sample_file="ExampleData/1-SNV_SampleCellType_Matrix.txt",
     sample_cell_file="ExampleData/2-SampleCelltype_Cell.txt",
     peaks_cell_file="ExampleData/3-Peaks_Cell.pkl",
     out_npz="ExampleData/Feature.npz"
@@ -104,7 +104,7 @@ where $S_{ij}$ denotes the SNN connectivity between cells $i$ and $j$. $N$ denot
 from VarPheno import prepare_edge_matrix
 
 prepare_edge_matrix(
-    SNV_cell_npz="ExampleData/Feature.npz",
+    snv_cell_npz="ExampleData/Feature.npz",
     snn_file="ExampleData/Snn_connectivities.pkl",
     out_npy="ExampleData/Edge.npy"
 )
@@ -121,13 +121,13 @@ SNV list should be prepared, and the order of the SNV list is consistent with th
 ## Run 
 
 ```bash
-from VarPheno import run_SNV_celltype_score
+from VarPheno import run_snv_celltype_score
 
-run_SNV_celltype_score(
+run_snv_celltype_score(
     matrix_npz = "ExampleData/Feature.npz",
     Edge_npy = "ExampleData/Edge.npy",
     label_csv = "ExampleData/Cell_label.csv",
-    SNV_name_file = "ExampleData/SNV.txt",
+    snv_name_file = "ExampleData/SNV.txt",
     outdir="Output"
 )
 ```

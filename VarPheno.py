@@ -41,8 +41,7 @@ def prepare_feature_matrix(
         sep="\t",
         index_col=0
     ).values
-    
-    #Peaks_Cell = pd.read_pickle(peaks_cell_file)
+
     Peaks_Cell = sp.load_npz(peaks_cell_file).toarray()
     Peaks_Cell = sp.csc_matrix(Peaks_Cell.astype("float64"))
     

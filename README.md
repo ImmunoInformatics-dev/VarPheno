@@ -1,7 +1,6 @@
 # VarPheno
 
-VarPheno integrates graph convolutional network and GNNExplainer model interpreter to embed somatic mutations into single cell regulatory landscapes and reveals their roles in shaping cell states and lineage dynamics.
-![](https://github.com/ImmunoInformatics-dev/VarPheno/blob/main/Abstract/VarPheno.png)
+VarPheno is a computational framework for interpreting the functional impact of somatic mutations in single-cell regulatory landscapes and characterizing their associations with cell states and lineage dynamics.
 
 ## Install
 
@@ -16,102 +15,6 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 pip install torch-geometric
 pip install numpy pandas scipy scikit-learn matplotlib seaborn tqdm scanpy anndata
 ```
-
-## Data Preparation
-
-### (1) Feature Matrix
-
-Three input files according to the example should be prepared:
-
-$M^{(1)}$: 1-SNV_SampleCellType_Matrix.txt
-
-|  | Sample1_Celltype1 | Sample1_Celltype2 |   ...   | Sample10_Celltype9 | Sample10_Celltype10 |
-|---|:---:|:---:|:---:|:---:|:---:|
-| chr1-838667-G-A | 1 | 0 | ... | 0 | 0 |
-| chr1-890636-T-C | 0 | 0 | ... | 0 | 1 |
-| chr1-991241-A-C | 0 | 1 | ... | 0 | 0 |
-
-$M^{(2)}$: 2-SampleCelltype_Cell.txt 
-
-|  | Cell1 | Cell2 | Cell3 | Cell4 |... | Cell98 | Cell99 | Cell100 |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Sample1_Celltype1 | 1 | 1 | 0 | 1 | ... | 0 | 1 | 0 |
-| Sample1_Celltype2 | 0 | 0 | 1 | 1 | ... | 0 | 0 | 1 |
-| ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| Sample10_Celltype9 | 0 | 0 | 0 | 0 | ... | 1 | 1 | 1 |
-| Sample10_Celltype10 | 0 | 0 | 0 | 0 | ... | 0 | 0 | 0 |
-
-$M^{(3)}$: 3-Peaks_Cell.npz
-
-|   | Cell1 | Cell2 | Cell3 | Cell4 |... | Cell98 | Cell99 | Cell100 |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| chr1-838400-838899 | 0.12 | 0.00 | 0.35 | 0.00 | ... | 0.08 | 0.00 | 0.00 |
-| chr1-890400-890899 | 0.00 | 0.21 | 0.00 | 0.00 | ... | 0.00 | 0.14 | 0.00 |
-| chr1-991000-991499 | 0.43 | 0.00 | 0.18 | 0.00 | ... | 0.00 | 0.00 | 0.00 |
-
-
-
-```math
-X_{\mathrm{SNV-Cell}}=\left(M^{\left(1\right)}M^{\left(2\right)}\right)\odot M^{\left(3\right)}
-```
-where $M^{(1)}$ denote an SNV-sample binary matrix indicating whether each SNV was detected in samples, $M^{(2)}$ is a sample-cell matrix used to record the sample source of each cell, $M^{(3)}$ denote the peak-cell normalized matrix obtained from scATAC-seq data. Only peaks that exited SNVs would be retained.
-
-
-
-```bash
-from VarPheno import prepare_feature_matrix
-
-prepare_feature_matrix(
-    snv_sample_file="ExampleData/1-SNV_SampleCellType_Matrix.txt",
-    sample_cell_file="ExampleData/2-SampleCelltype_Cell.txt",
-    peaks_cell_file="ExampleData/3-Peaks_Cell.npz",
-    out_npz="ExampleData/Feature.npz"
-)
-```
-
-### (2) Edge Matrix
-
-Snn_connectivities.npz should be prepared:
-
-|   | Cell1 | Cell2 | Cell3 | Cell4 |... | Cell98 | Cell99 | Cell100 |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Cell1 | 1 | 0 | 0 | 0 | ... | 0 | 1 | 0 |
-| Cell2 | 0 | 1 | 0 | 1 | ... | 0 | 0 | 0 |
-| Cell3 | 0 | 0 | 1 | 0 | ... | 0 | 0 | 0 |
-| Cell4 | 0 | 0 | 0 | 1 | ... | 0 | 0 | 0 |
-| ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| Cell98 | 0 | 0 | 0 | 0 | ... | 1 | 0 | 0 |
-| Cell99 | 0 | 1 | 0 | 0 | ... | 0 | 1 | 0 |
-| Cell100 | 0 | 0 | 0 | 0 | ... | 0 | 0 | 1 |
-
-
-The edge matrix is obtained by calculating the cosine similarity of the Feature matrix, and impose restrictions based on the SNN structure. Formally, the adjacency matrix $A\in\mathbb{R}^{N\times N}$ was defined as:
-```math
-A_{ij} =
-\begin{cases}
-\mathrm{sim}(x_i, x_j), & S_{ij} > 0 \\
-0, & S_{ij} = 0
-\end{cases}
-```
-where $S_{ij}$ denotes the SNN connectivity between cells $i$ and $j$. $N$ denotes the number of cells.
-
-```bash
-from VarPheno import prepare_edge_matrix
-
-prepare_edge_matrix(
-    snv_cell_npz="ExampleData/Feature.npz",
-    snn_file="ExampleData/Snn_connectivities.npz",
-    out_npy="ExampleData/Edge.npy"
-)
-```
-
-### (3) Cell label
-
-The cell type to which the cells belong in the 2-SampleCelltype_Cell.txt file.
-
-### (4) SNV list
-
-SNV list should be prepared, and the order of the SNV list is consistent with the column names in 1-SNV_SampleCellType_Matrix.txt.
 
 ## Run 
 
